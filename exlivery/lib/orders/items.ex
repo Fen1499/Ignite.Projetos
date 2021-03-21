@@ -23,6 +23,6 @@ defmodule Exlivery.Orders.Item do
   }
   end
 
-  defp build_item(:error, __description, _category,  _quantity), do: {:error, "Invalid parameters"}
+  defp build_item(:error, __description, _category,  _quantity), do: {:error, "Invalid price"}
 
 end

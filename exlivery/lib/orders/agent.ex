@@ -24,4 +24,6 @@ defmodule Exlivery.Orders.Agent do
     end
   end
 
+  def list_all(), do: Agent.get(__MODULE__, & &1)
+
 end

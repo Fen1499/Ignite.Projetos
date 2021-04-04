@@ -1,0 +1,15 @@
+defmodule RockeliveryWeb.UsersController do
+  use RockeliveryWeb, :controller
+  alias Rockelivery.Users.User
+  alias RockeliveryWeb.FallbackController
+
+  action_fallback FallbackController
+  def create(conn, params) do
+    with {:ok, %User{} = user} <- Rockelivery.create_user(params) do
+      conn
+      |> put_status(:create)
+      |> render("create.json", user: user)
+    end
+  end
+
+end

@@ -10,7 +10,14 @@ defmodule Rockelivery.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -46,7 +53,9 @@ defmodule Rockelivery.MixProject do
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:decimal, "~>2.0"},
       {:elixir_uuid, "~>1.2"},
-      {:pbkdf2_elixir, "~>1.3"}
+      {:excoveralls, "~> 0.10", only: :test},
+      {:pbkdf2_elixir, "~>1.3"},
+      {:ex_machina, "~>2.7.0"}
     ]
   end
 

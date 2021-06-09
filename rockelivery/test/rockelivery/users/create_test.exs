@@ -3,11 +3,18 @@ defmodule Rockelivery.Users.CreateTest do
 
   alias Rockelivery.Error
   alias Rockelivery.Users.{User, Create}
+  alias Rockelivery.ViaCep.ClientMock
 
+  import Mox
   import Rockelivery.Factory
 
   describe "call/1" do
     test "when all params are valid, returns an user" do
+
+      expect(ClientMock, :get_cep_info, fn _cep ->
+        {:ok, %{}}
+      end)
+
       response =
        build(:user_params)
       |>Create.call()
